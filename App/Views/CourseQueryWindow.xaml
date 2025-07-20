@@ -1,0 +1,30 @@
+﻿<Window x:Class="EquipRentalPointApp.Views.CourseQueryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EquipRentalPointApp.Views"
+        mc:Ignorable="d"
+        Title="CourseQuery" SizeToContent="WidthAndHeight" ResizeMode="CanResizeWithGrip"
+        WindowStartupLocation="CenterOwner">
+    <Grid Background="#FFDADADA">
+        <Border MaxWidth="1020" Margin="15" Background="White" VerticalAlignment="Center" 
+                Padding="10" CornerRadius="20" Cursor="">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="LightGray"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" Content="Клиент с максимальной оплатой в заданной категории" Click="QueryA_Click"/>
+                <Button Grid.Row="1" Content="2 самых непопулярных инвентаря в самой популярной категории" Click="QueryB_Click"/>
+                <Button Grid.Row="2" Content="Кто арендовал 3 инвентаря из 6 категорий" Click="QueryC_Click"/>
+                <Button Grid.Row="3" Content="Факты выдачи за период заданный пользователем" Click="QueryD_Click"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

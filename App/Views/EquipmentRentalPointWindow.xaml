@@ -1,0 +1,47 @@
+﻿<Window x:Class="EquipRentalPointApp.Views.EquipmentRentalPointWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EquipRentalPointApp.Views"
+        mc:Ignorable="d"
+        Title="Пункт проката инвентаря (обзор инвентаря)" SizeToContent="WidthAndHeight" ResizeMode="CanResizeWithGrip"
+        WindowStartupLocation="CenterOwner">
+    <Grid Background="#FFDADADA">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Border MaxHeight="620" MaxWidth="1020" Margin="15" Background="White" VerticalAlignment="Center" 
+                Padding="10" CornerRadius="20" Cursor="">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="LightGray"/>
+            </Border.Effect>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                          HorizontalScrollBarVisibility="Auto" MaxHeight="600"
+                          MaxWidth="1000">
+                <ListView x:Name="EquipmentsList"  SelectionMode="Multiple" SelectionChanged="EquipmentsList_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Название" Width="Auto" DisplayMemberBinding="{Binding Title}" />
+                            <GridViewColumn Header="Цена" Width="Auto" DisplayMemberBinding="{Binding Price, StringFormat={}{0:F2}}" />
+                            <GridViewColumn Header="Категории" DisplayMemberBinding="{Binding CategoryString}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </ScrollViewer>
+        </Border>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Grid.ColumnSpan="2" Content="Выдать инвентарь" Click="AddNewRental_Click"/>
+            <Button Grid.Row="2" Content="Список клиентов" Click="Clients_Click"/>
+            <Button Grid.Row="1" Content="Новый инвентарь" Click="AddNewEquipment_Click"/>
+            <Button Grid.Row="3" Content="Внести оплату" Click="AddNewPayment_Click"/>
+        </Grid>
+    </Grid>
+</Window>

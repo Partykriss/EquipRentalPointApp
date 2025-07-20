@@ -1,0 +1,35 @@
+﻿<Window x:Class="EquipRentalPointApp.Views.ViewClientsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EquipRentalPointApp.Views"
+        mc:Ignorable="d"
+        Title="Обзор клиентов"  SizeToContent="WidthAndHeight" ResizeMode="CanResizeWithGrip"
+        WindowStartupLocation="CenterOwner">
+    <Grid Background="#FFDADADA">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Border MaxHeight="620" Margin="15" Background="White" VerticalAlignment="Center" 
+                Padding="10" CornerRadius="20" Cursor="">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="LightGray"/>
+            </Border.Effect>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                          HorizontalScrollBarVisibility="Auto" MaxHeight="600"
+                          MaxWidth="1000">
+                <ListView x:Name="ClientsVeiw">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Полное имя" Width="Auto" DisplayMemberBinding="{Binding FullName}" />
+                            <GridViewColumn Header="Телефон" Width="Auto" DisplayMemberBinding="{Binding Phone}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </ScrollViewer>
+        </Border>
+        <Button Grid.Row="1" Content="Добавить нового клиента" Click="AddNewClient_Click" Margin="30 0"/>
+    </Grid>
+</Window>

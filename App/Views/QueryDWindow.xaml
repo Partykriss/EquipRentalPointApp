@@ -1,0 +1,42 @@
+﻿<Window x:Class="EquipRentalPointApp.Views.QueryDWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EquipRentalPointApp.Views"
+        mc:Ignorable="d"
+        Title="Вопрос D" SizeToContent="WidthAndHeight" ResizeMode="CanResizeWithGrip"
+        WindowStartupLocation="CenterOwner">
+    <Grid Background="#FFDADADA">
+        <Border MaxWidth="1020" MinWidth="600" Margin="15" Background="White" VerticalAlignment="Center" 
+                    Padding="10" CornerRadius="20" Cursor="">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="LightGray"/>
+            </Border.Effect>
+            <StackPanel>
+                <StackPanel>
+                    <Label Content="Выберите период для вывода отчета:" HorizontalAlignment="Center"/>
+                    <Calendar x:Name="Calendar" SelectionMode="SingleRange" Width="300" Height="300"
+                              SelectedDatesChanged="Calendar_SelectedDatesChanged"/>
+                    <Button x:Name="CalendarButton" Content="Вывести отчет" MaxWidth="200" Click="CalendarButton_Click" IsEnabled="False"/>
+                </StackPanel>
+                <ListView x:Name="AnswerQueryD">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Выданный инвентарь" Width="Auto" DisplayMemberBinding="{Binding EquipmentsString}"/>
+                            <GridViewColumn Header="Имя клиента" Width="Auto" DisplayMemberBinding="{Binding ClientName}"/>
+                            <GridViewColumn Header="Телефон клиента" Width="Auto" DisplayMemberBinding="{Binding ClientPhone}"/>
+                            <GridViewColumn Header="Дата выдачи" Width="Auto" DisplayMemberBinding="{Binding DateBegin, StringFormat={}{0:d}}"/>
+                            <GridViewColumn Header="Дата возврата" Width="Auto" DisplayMemberBinding="{Binding DateEnd, StringFormat={}{0:d}}"/>
+                            <GridViewColumn Header="За сутки" Width="Auto" DisplayMemberBinding="{Binding SumPrice, StringFormat={}{0:F2}}"/>
+                            <GridViewColumn Header="Оплачено" Width="Auto" DisplayMemberBinding="{Binding Payed, StringFormat={}{0:F2}}"/>
+                            <GridViewColumn Header="Стоимость" Width="Auto" DisplayMemberBinding="{Binding Total, StringFormat={}{0:F2}}"/>
+                            <GridViewColumn Header="Задолженность" Width="Auto" DisplayMemberBinding="{Binding ToPay, StringFormat={}{0:F2}}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button Content="OK" MaxWidth="150" Click="OK_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

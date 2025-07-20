@@ -1,0 +1,45 @@
+﻿<Window x:Class="EquipRentalPointApp.Views.MakePaymentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EquipRentalPointApp.Views"
+        mc:Ignorable="d"
+        Title="Обзор неоплаченных заявок" SizeToContent="WidthAndHeight" ResizeMode="CanResizeWithGrip"
+        WindowStartupLocation="CenterOwner">
+    <Grid Background="#FFDADADA">
+        <Border MaxWidth="1000" MaxHeight="800" Margin="15" Background="White" VerticalAlignment="Center" 
+                Padding="10" CornerRadius="20" Cursor="">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="LightGray"/>
+            </Border.Effect>
+            <StackPanel>
+                <StackPanel Margin="10 5">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Фильтр по имени:" MinWidth="200"/>
+                        <TextBox x:Name="NameFilter" Margin="5 0" Width="150" TextChanged="Filter_TextChanged"/>
+                    </StackPanel >
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                        <Label Content="Фильтр по телефону:" MinWidth="200"/>
+                        <TextBox x:Name="PhoneFilter" Margin="5 0" Width="150" TextChanged="Filter_TextChanged"/>
+                    </StackPanel>
+                    <Label Content="Выберите заявку по которой производится платеж:" HorizontalAlignment="Center"/>
+                    <ListView x:Name="RentalsList" SelectionMode="Single" SelectionChanged="RentalsList_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Инвентарь" Width="Auto" DisplayMemberBinding="{Binding EquipmentsString}"/>
+                                <GridViewColumn Header="ФИО Клиента" Width="Auto" DisplayMemberBinding="{Binding Client.FullName}"/>
+                                <GridViewColumn Header="Номер телефона" Width="Auto" DisplayMemberBinding="{Binding Client.Phone}"/>
+                                <GridViewColumn Header="Внесено" Width="Auto" DisplayMemberBinding="{Binding Payed, StringFormat={}{0:F2}}"/>
+                                <GridViewColumn Header="Стоимость" Width="Auto" DisplayMemberBinding="{Binding Total, StringFormat={}{0:F2}}"/>
+                                <GridViewColumn Header="Дата выдачи" Width="Auto" DisplayMemberBinding="{Binding DateBegin, StringFormat={}{0:d}}"/>
+                                <GridViewColumn Header="Дата возврата" Width="Auto" DisplayMemberBinding="{Binding DateEnd, StringFormat={}{0:d}}"/>                                
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </StackPanel>
+                <Button Content="Внести платеж" x:Name="AddPaymentButton" IsEnabled="False" Click="AddPaymentButton_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
